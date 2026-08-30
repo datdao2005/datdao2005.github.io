@@ -1,6 +1,6 @@
 ---
 title: "Hello world"
-date: 2026-08-30 22:49:00 +0700
+date: 2026-08-30 22:51:00 +0700
 categories: [Hello_world]
 tags: [introduction]
 
