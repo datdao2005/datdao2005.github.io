@@ -10,7 +10,7 @@ Well, chào mọi người, mình là Đạt, một sinh viên năm cuối cùng
 
 Nay cũng không có gì, kiểu viết cái post để trả nợ những lần bị mình delay quá lâu, cụ thể là 3 năm. Như tiêu đề, đây là tổng hợp những bài mình đã từng làm (và chắc chắn là chưa solve được) trong đợt tham dự vòng chung kết Hacktheon Sejong năm 2025 tại Hàn Quốc.
 
-# Simple DRM
+## Simple DRM
 Bài này không nhớ mô tả là gì nên thôi vô vấn đề chính nha :V
 Bài cho chúng ta 1 file zip chứa 1 file PE simple_drm_v0.1.0_x64_setup.exe để setup chương trình và 4 file .png.enc, khả năng là 4 file ảnh bị mã hóa.
 ![Image Alt Text](/assets/img/posts/drm.png)
@@ -460,6 +460,9 @@ Tới đây thì mọi thứ có tương lai hơn rồi.
 Challenge mình sẽ để link bên dưới để các bạn trải nghiệm thử nha, cảm ơn mọi người đã đọc cái WU xàm xí này của mình, chúc mọi người vui vẻ và tránh bị vấp cỏ như mình ngày trước ! :)))
 
 [Simple DRM](/assets/downloads/simple_drm.zip)
+
+## Tài liệu tham khảo
+[What is Tauri](https://v2.tauri.app/start/)
 
 
 
