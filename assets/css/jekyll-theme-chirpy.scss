@@ -13,10 +13,19 @@
 ';
 
 /* append your custom style below */
-$max-lines: 25; // max lines of code to be scrolled
 
-div.scroll > .highlight  {
-    overflow-y: auto;
-    max-height: $max-lines * 1em;
+.highlight {
+  max-width: 100%;
+  max-height: 500px;
+  overflow: auto;
 }
-/* append your custom style below */
+
+.highlight pre {
+  margin: 0;
+  overflow: visible;
+  white-space: pre;
+}
+
+.highlight code {
+  white-space: pre;
+}

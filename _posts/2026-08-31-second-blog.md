@@ -41,7 +41,7 @@ Lục tìm một hồi thì cái đập vào mắt mình là một file wasm aka
 
 Bỏ vào Ghidra thì thấy có 1 hàm có tiềm năng:
 
-``` C
+```c
 
 int export::inject_key(undefined4 param1,uint param2,undefined4 param3,uint param4)
 
@@ -171,9 +171,293 @@ code_r0x80002886:
 }
 
 ```
-{: .scroll}
 
+Nôm na là cái hàm này sẽ chèn cái header "SDRM" vào các file bị mã hóa, nhưng mà cơ chế mã hóa ra sao thì lại chưa nằm ở chỗ này.
+Tiếp tục mò mấy folder khác, có folder "node" chứa 3 file Javascript, trong đó file cuối cùng khá sú:
 
+```js
+import {
+    t as x, b as g
+}
+
+from"../chunks/DIzuPXZE.js";
+import {
+    i as X
+}
+
+from"../chunks/Bmu4QhlG.js";
+import {
+    h as T, a2 as Y, a3 as J, a4 as Z, a5 as ee, C as te, a6 as ne, w as ae, a7 as re, a8 as se, I as u, z as ie, Q as _, a9 as I, aa as O, O as p, P as w, ab as oe
+}
+
+from"../chunks/fua1tWYb.js";
+import {
+    b as le, l as ce, e as N
+}
+
+from"../chunks/BC_VcuN-.js";
+import {
+    i as S
+}
+
+from"../chunks/XEl44-Fd.js";
+const fe = Symbol("is custom element"), ue = Symbol("is html");
+function de(e) {
+    if (T)  {
+        var t = !1, n = () => {
+            if (!t)  {
+                if (t = !0, e.hasAttribute("value"))  {
+                    var r = e.value;
+                    D(e, "value", null), e.value = r
+                }
+
+                if (e.hasAttribute("checked"))  {
+                    var s = e.checked;
+                    D(e, "checked", null), e.checked = s
+                }
+
+            }
+
+        };
+        e.__on_r = n, Y(n), le()
+    }
+
+}
+
+function D(e, t, n, r) {
+    var s = be(e);
+    T&&(s[t] = e.getAttribute(t), t === "src"||t === "srcset"||t === "href"&&e.nodeName === "LINK")||s[t] !== (s[t] = n)&&(t === "loading"&&(e[J] = n), e.removeAttribute(t))
+}
+
+function be(e) {
+    return e.__attributes??(e.__attributes = {
+        [fe]:e.nodeName.includes("-"), [ue]:e.namespaceURI === Z
+    }
+
+    )
+}
+
+function ye(e, t, n = t) {
+    var r = ee();
+    ce(e, "input", s => {
+        var o = s?e.defaultValue:e.value;
+        if (o = L(e)?R(o):o, n(o), r&&o !== (o = t()))  {
+            var d = e.selectionStart, y = e.selectionEnd;
+            e.value = o??"", y !== null&&(e.selectionStart = d, e.selectionEnd = Math.min(y, e.value.length))
+        }
+
+    }
+
+    ), (T&&e.defaultValue !== e.value||te(t) == null&&e.value)&&n(L(e)?R(e.value):e.value), ne(() => {
+        var s = t();
+        L(e)&&s === R(e.value)||e.type === "date"&&!s&&!e.value||s !== e.value&&(e.value = s??"")
+    }
+
+    )
+}
+
+function L(e) {
+    var t = e.type;
+    return t === "number"||t === "range"
+}
+
+function R(e) {
+    return e === ""?null: + e
+}
+
+async function h(e, t = {}, n) {
+    return window.__TAURI_INTERNALS__.invoke(e, t, n)
+}
+
+async function _e(e = {}
+
+) {
+    return typeof e == "object"&&Object.freeze(e), await h("plugin:dialog|open", {
+        options:e
+    }
+
+    )
+}
+
+let c, v = null;
+function P() {
+    return(v === null||v.byteLength === 0)&&(v = new Uint8Array(c.memory.buffer)), v
+}
+
+let M = 0;
+function C(e, t) {
+    const n = t(e.length * 1, 1) >>> 0;
+    return P().set(e, n/1),M=e.length,n}function ve(e,t){return e=e>>>0,P().subarray(e/1, e / 1 + t)
+}
+
+function me(e, t) {
+    const n = C(e, c.__wbindgen_malloc), r = M, s = C(t, c.__wbindgen_malloc), o = M, d = c.inject_key(n, r, s, o);
+    var y = ve(d[0], d[1]).slice();
+    return c.__wbindgen_free(d[0], d[1] * 1, 1), y
+}
+
+async function ge(e, t) {
+    if (typeof Response == "function"&&e instanceof Response)  {
+        if (typeof WebAssembly.instantiateStreaming == "function") try {
+            return await WebAssembly.instantiateStreaming(e, t)
+        } catch(r) {
+            if (e.headers.get("Content-Type") != "application/wasm")console.warn("`WebAssembly.instantiateStreaming` failed because your server does not serve Wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n", r);
+            else throw r
+        }
+
+        const n = await e.arrayBuffer();
+        return await WebAssembly.instantiate(n, t)
+    } else {
+        const n = await WebAssembly.instantiate(e, t);
+        return n instanceof WebAssembly.Instance? {
+            instance:n, module:e
+        }
+
+        :n
+    }
+
+}
+
+function pe() {
+    const e = {};
+    return e.wbg = {}, e.wbg.__wbindgen_init_externref_table = function() {
+        const t = c.__wbindgen_export_0, n = t.grow(4);
+        t.set(0, void 0), t.set(n + 0, void 0), t.set(n + 1, null), t.set(n + 2, !0), t.set(n + 3, !1)
+    }, e
+}
+
+function we(e, t) {
+    return c = e.exports, H.__wbindgen_wasm_module = t, v = null, c.__wbindgen_start(), c
+}
+
+async function H(e) {
+    if (c !== void 0) return c;
+    typeof e < "u"&&(Object.getPrototypeOf(e) === Object.prototype? {
+        module_or_path:e
+    } = e:console.warn("using deprecated parameters for the initialization function; pass a single object instead")), typeof e > "u"&&(e = new URL("" + new URL("../assets/key_injector_bg.X6nK8EHb.wasm", import.meta.url).href, import.meta.url));
+    const t = pe();
+    (typeof e == "string"||typeof Request == "function"&&e instanceof Request||typeof URL == "function"&&e instanceof URL)&&(e = fetch(e));
+    const {
+        instance:n, module:r
+    } = await ge(await e, t);
+    return we(n, r)
+}
+
+var he = x('<label for="email" class="text-lg font-medium text-gray-700">Enter your email to continue</label>'), xe = x('<p class="text-sm text-red-500">Please enter a valid email address</p>'), Ae = x('<div class="my-auto flex justify-evenly"><button class="cursor-pointer rounded-lg border bg-white px-6 py-4 text-lg shadow-md transition hover:scale-105 hover:shadow-lg">Encrypt</button> <button class="flex cursor-not-allowed flex-col rounded-lg border bg-gray-100 px-6 py-4 text-lg shadow-md">Decrypt</button></div>'), ke = x('<main class="container mx-auto"><div class="flex min-h-screen flex-col border-gray-900 p-8 text-center text-gray-900"><div class="flex flex-col gap-2"><h1 class="text-3xl font-bold tracking-wide">Simple DRM</h1> <p class="text-xl italic"><span class="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-6 before:bg-pink-500"><span class="relative font-semibold text-white">free</span></span><span class="pl-2 tracking-wide">Edition</span></p></div> <div class="my-8 flex flex-col items-center gap-4"><!> <input id="email" type="email" placeholder="your-email@example.com" class="w-full max-w-md rounded-lg border border-gray-300 px-4 py-3 text-center text-lg shadow-sm transition focus:border-pink-500 focus:ring-2 focus:ring-pink-200 focus:outline-none"> <!></div> <!> <footer class="absoulte right-0 botton-0 left-0 pb-4 text-center"><p class="text-sm text-gray-500">Powered by Tauri</p></footer></div></main>');
+function Te(e, t) {
+    ae(t, !1);
+    const n = O();
+    let r = O("");
+    (async() => await H())();
+    async function s(a) {
+        const b = new TextEncoder().encode(a.trim().toLowerCase()), l = await crypto.subtle.digest("SHA-256", b);
+        return new Uint8Array(l)
+    }
+
+    function o(a, i) {
+        const b = new Uint8Array(a.length);
+        for(let l = 0; l < a.length;l++)
+            b[l] = a[l]^i[l%i.length];
+        return b
+    }
+
+    async function d() {
+        if (!u(n)) return;
+        const a = await _e( {
+            multiple:!0
+        }
+
+        );
+        if (Array.isArray(a)&&a.length > 0)  {
+            const i = a.map(async m => {
+                const $ = await h("read_file", {
+                    path:m
+                }
+
+                ).then(f => f).catch(f => {
+                    throw console.error(f), f
+                }
+
+                ), j = await s(u(r)), G = o($, j), Q = me(j, G);
+                return await h("save_enc_file", {
+                    path:m, contents:Q
+                }
+
+                ).then(f => f).catch(f => {
+                    throw console.error(f), f
+                }
+
+                )
+            }
+
+            ), l = (await Promise.all(i)).filter(m => m !== void 0).length, K = await h("get_app_data_dir");
+            alert(`$ {
+                l
+            }
+
+            files are encrypted.
+            Check the '${K}'`)
+        }
+
+    }
+
+    function y() {
+        alert("Decryption is only available in the Pro edition.")
+    }
+
+    re(() => u(r), () => {
+        I(n, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u(r).trim()))
+    }
+
+    ), se(), X();
+    var A = ke(), U = p(A), k = _(p(U), 2), W = p(k); {
+        var z = a => {
+            var i = he();
+            g(a, i)
+        };
+        S(W, a => {
+            u(n)||a(z)
+        }
+
+        )
+    }
+
+    var E = _(W, 2);
+    de(E);
+    var V = _(E, 2); {
+        var q = a => {
+            var i = xe();
+            g(a, i)
+        };
+        S(V, a => {
+            u(r).trim().length > 0&&!u(r).includes("@")&&a(q)
+        }
+
+        )
+    }
+
+    w(k);
+    var B = _(k, 2); {
+        var F = a => {
+            var i = Ae(), b = p(i), l = _(b, 2);
+            w(i), N("click", b, d), N("click", l, y), g(a, i)
+        };
+        S(B, a => {
+            u(n)&&a(F)
+        }
+
+        )
+    }
+
+    oe(2), w(U), w(A), ye(E, () => u(r), a => I(r, a)), g(e, A), ie()
+}
+
+export {
+    Te as component
+};
+```
+
+Tới đây thì mọi thứ có tương lai hơn rồi.
 Challenge mình sẽ để link bên dưới để các bạn trải nghiệm thử nha, cảm ơn mọi người đã đọc cái WU xàm xí này của mình, chúc mọi người vui vẻ và tránh bị vấp cỏ như mình ngày trước ! :)))
 
 
