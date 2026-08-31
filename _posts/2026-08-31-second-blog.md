@@ -343,14 +343,18 @@ async function H(e) {
     return we(n, r)
 }
 
-var he = x('<label for="email" class="text-lg font-medium text-gray-700">Enter your email to continue</label>'), xe = x('<p class="text-sm text-red-500">Please enter a valid email address</p>'), Ae = x('<div class="my-auto flex justify-evenly"><button class="cursor-pointer rounded-lg border bg-white px-6 py-4 text-lg shadow-md transition hover:scale-105 hover:shadow-lg">Encrypt</button> <button class="flex cursor-not-allowed flex-col rounded-lg border bg-gray-100 px-6 py-4 text-lg shadow-md">Decrypt</button></div>'), ke = x('<main class="container mx-auto"><div class="flex min-h-screen flex-col border-gray-900 p-8 text-center text-gray-900"><div class="flex flex-col gap-2"><h1 class="text-3xl font-bold tracking-wide">Simple DRM</h1> <p class="text-xl italic"><span class="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-6 before:bg-pink-500"><span class="relative font-semibold text-white">free</span></span><span class="pl-2 tracking-wide">Edition</span></p></div> <div class="my-8 flex flex-col items-center gap-4"><!> <input id="email" type="email" placeholder="your-email@example.com" class="w-full max-w-md rounded-lg border border-gray-300 px-4 py-3 text-center text-lg shadow-sm transition focus:border-pink-500 focus:ring-2 focus:ring-pink-200 focus:outline-none"> <!></div> <!> <footer class="absoulte right-0 botton-0 left-0 pb-4 text-center"><p class="text-sm text-gray-500">Powered by Tauri</p></footer></div></main>');
+var he = x('<label for="email" class="text-lg font-medium text-gray-700">Enter your email to continue</label>'), 
+xe = x('<p class="text-sm text-red-500">Please enter a valid email address</p>'), 
+Ae = x('<div class="my-auto flex justify-evenly"><button class="cursor-pointer rounded-lg border bg-white px-6 py-4 text-lg shadow-md transition hover:scale-105 hover:shadow-lg">Encrypt</button> <button class="flex cursor-not-allowed flex-col rounded-lg border bg-gray-100 px-6 py-4 text-lg shadow-md">Decrypt</button></div>'), 
+ke = x('<main class="container mx-auto"><div class="flex min-h-screen flex-col border-gray-900 p-8 text-center text-gray-900"><div class="flex flex-col gap-2"><h1 class="text-3xl font-bold tracking-wide">Simple DRM</h1> <p class="text-xl italic"><span class="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-6 before:bg-pink-500"><span class="relative font-semibold text-white">free</span></span><span class="pl-2 tracking-wide">Edition</span></p></div> <div class="my-8 flex flex-col items-center gap-4"><!> <input id="email" type="email" placeholder="your-email@example.com" class="w-full max-w-md rounded-lg border border-gray-300 px-4 py-3 text-center text-lg shadow-sm transition focus:border-pink-500 focus:ring-2 focus:ring-pink-200 focus:outline-none"> <!></div> <!> <footer class="absoulte right-0 botton-0 left-0 pb-4 text-center"><p class="text-sm text-gray-500">Powered by Tauri</p></footer></div></main>');
 function Te(e, t) {
     ae(t, !1);
     const n = O();
     let r = O("");
     (async() => await H())();
     async function s(a) {
-        const b = new TextEncoder().encode(a.trim().toLowerCase()), l = await crypto.subtle.digest("SHA-256", b);
+        const b = new TextEncoder().encode(a.trim().toLowerCase()), 
+        l = await crypto.subtle.digest("SHA-256", b);
         return new Uint8Array(l)
     }
 
@@ -391,12 +395,7 @@ function Te(e, t) {
             }
 
             ), l = (await Promise.all(i)).filter(m => m !== void 0).length, K = await h("get_app_data_dir");
-            alert(`$ {
-                l
-            }
-
-            files are encrypted.
-            Check the '${K}'`)
+            alert(`$ {l} files are encrypted. Check the '${K}'`)
         }
 
     }
