@@ -459,5 +459,8 @@ export {
 Tới đây thì mọi thứ có tương lai hơn rồi.
 Challenge mình sẽ để link bên dưới để các bạn trải nghiệm thử nha, cảm ơn mọi người đã đọc cái WU xàm xí này của mình, chúc mọi người vui vẻ và tránh bị vấp cỏ như mình ngày trước ! :)))
 
+[Simple DRM](/assets/downloads/simple_drm.zip)
+
+
 
 
